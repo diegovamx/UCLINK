@@ -61,10 +61,46 @@ export const signup = async (req, res) => {
     }
 }
 
-export const login = (req, res) => {
-    res.send('Login');
+export const login = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
+
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '3d' });
+        await res.cookie('jwt-UCLINK', token, {
+            maxAge: 3 * 24 * 60 * 60 * 1000,
+            httpOnly: true,
+            sameSite: "strict",
+            secure: process.env.NODE_ENV === "production"
+        });
+
+
+
+        res.json({ message: "User logged in successfully" });
+    } catch (error) {
+        console.error ("Error in login: ", error);
+        res.status(500).json({ message: "Internal server error"});
+    }
 }
 
 export const logout = (req, res) => {
-    res.send('Logout');
+    res.clearCookie('jwt-UCLINK');   
+    res.json({ message: "User logged out" });
+}
+
+export const getCurrentUser = (req, res) => {
+    try {
+        res.json(req.user)
+    } catch (error) {
+        
+    }
 }
