@@ -121,6 +121,7 @@ export const getConnectionRequests = async (req, res) => {
 	try {
 		const userId = req.user._id;
 
+		//TODO: UPDATE FOR CONSISTENCY
 		const requests = await ConnectionRequest.find({ recipient: userId, status: "pending" }).populate(
 			"sender",
 			"name username profilePicture headline connections"
@@ -136,10 +137,10 @@ export const getConnectionRequests = async (req, res) => {
 export const getUserConnections = async (req, res) => {
 	try {
 		const userId = req.user._id;
-
+		//TODO: UPDATE FOR CONSISTENCY
 		const user = await User.findById(userId).populate(
 			"connections",
-			"name username profilePicture school connections"
+			"name username profilePicture headline connections"
 		);
 
 		res.json(user.connections);

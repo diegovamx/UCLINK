@@ -6,7 +6,7 @@ export const getSuggestedConnections = async (req, res) => {
             _id:{
                 $ne: req.user._id, $nin: currentUser.connections
             }
-        }).select("name username profilePicture school").limit(3);
+        }).select("name username profilePicture").limit(3);
 
         res.json(suggestedUser);
     } catch(error) {
@@ -30,19 +30,18 @@ export const getPublicProfile = async (req, res) => {
     }
 }
 
-
+//TODO: UPDATE FOR CONSISTENCY
 export const updateProfile = async (req, res) => {
 	try {
 		const allowedFields = [
 			"name",
 			"username",
-			"school",
+			"headline",
 			"about",
 			"homeTown",
 			"profilePicture",
 			"bannerImg",
 			"skills",
-			"hobbies",
 			"education",
 		];
 
@@ -53,7 +52,7 @@ export const updateProfile = async (req, res) => {
 				updatedData[field] = req.body[field];
 			}
 		}
-
+		education
         if (req.body.profilePicture) {
 			const result = await cloudinary.uploader.upload(req.body.profilePicture);
 			updatedData.profilePicture = result.secure_url;

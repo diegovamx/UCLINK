@@ -22,4 +22,4 @@ router.get("/", protectRoute, getUserConnections);
 router.delete("/:userId", protectRoute, removeConnection);
 router.get("/status/:userId", protectRoute, getConnectionStatus);
 
-export default router;
+export default router; 

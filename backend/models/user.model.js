@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//TODO: UPDATE FOR CONSISTENCY
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     username: { type: String, required: true, unique: true },
@@ -8,18 +9,9 @@ const userSchema = new mongoose.Schema({
     profilePic: { type: String, default: "" },
     bannerImg: { type: String, default: "" },
     headline: { type: String, default: "" },
-    location: { type: String, default: "" },
+    homeTown: { type: String, default: "" },
     about: { type: String, default: "" },
-    skills: { type: [String], default: [] },
-    experience: [
-      {
-        title: String,
-        company: String,
-        startDate: Date,
-        endDate: Date,
-        description: String
-      }  
-    ],
+    skills: [String],
     education: [
       {
         school: String,
