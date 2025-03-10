@@ -2,15 +2,23 @@
   "name": "uclink",
   "version": "1.0.0",
   "description": "UC LINK WIP",
+  "keywords": [],
+  "homepage": "https://github.com/diegovamx/UCLINK#readme",
+  "bugs": {
+    "url": "https://github.com/diegovamx/UCLINK/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegovamx/UCLINK.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
   "main": "backend/server.js",
   "scripts": {
     "dev": "nodemon backend/server.js",
     "start": "node backend/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "type": "module",
-  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cloudinary": "^2.5.1",
