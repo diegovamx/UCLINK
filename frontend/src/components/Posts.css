@@ -1,0 +1,12 @@
+.posts {
+  flex: 4;
+  background-color: #333;
+  padding: 20px;
+  margin: 0px 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  border-radius: 8px;
+}

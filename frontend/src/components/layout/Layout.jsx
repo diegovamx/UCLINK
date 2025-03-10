@@ -1,10 +1,11 @@
 import Navbar from "./Navbar"
+import "./Layout.css"
 
 const Layout = ({ children }) => {
   return (
     <div className='layout'>
         <Navbar />
-        <main className='max-w-7xl mx-auto px-4 py-6'>{children}</main>
+        <main className='screen'>{children}</main>
     </div>
   )
 }

@@ -1,3 +1,13 @@
 .layout {
-    background-color: black;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; 
+}
+
+.screen {
+  flex-grow: 1; 
+  padding: 20px;
+  background-color: #121212; 
+  color: white; 
 }
